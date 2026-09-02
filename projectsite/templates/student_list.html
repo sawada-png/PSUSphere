@@ -22,20 +22,24 @@
                     <div class="col-md-12 row">
 
                         <div class="col-md-6">
-                            <form class="navbar-left navbar-form nav-search mr-md-3" action="">
-                                <div class="input-group">
+                            <form class="navbar-left navbar-form nav-search mr-md-3"
+                                  action="{% url 'student-list' %}"
+                                  method="get">
 
+                                <div class="input-group">
                                     <input type="text"
                                            placeholder="Search ..."
-                                           class="form-control" />
+                                           class="form-control"
+                                           name="q"
+                                           value="{{ request.GET.q }}">
 
                                     <div class="input-group-append">
                                         <span class="input-group-text">
                                             <i class="la la-search search-icon"></i>
                                         </span>
                                     </div>
-
                                 </div>
+
                             </form>
                         </div>
 
@@ -74,13 +78,9 @@
                                 <tr>
 
                                     <td>{{ object.student_id }}</td>
-
                                     <td>{{ object.lastname }}</td>
-
                                     <td>{{ object.firstname }}</td>
-
                                     <td>{{ object.middlename }}</td>
-
                                     <td>{{ object.program }}</td>
 
                                     <td>
@@ -114,7 +114,10 @@
 
                         </table>
 
+                        {% include 'includes/pagination.html' %}
+
                     </div>
+
                 </div>
 
             </div>

@@ -19,9 +19,15 @@
 
                     <div class="col-md-12 row">
                         <div class="col-md-6">
-                            <form class="navbar-left navbar-form nav-search mr-md-3" action="">
+                            <form class="navbar-left navbar-form nav-search mr-md-3"
+                                  action="{% url 'college-list' %}"
+                                  method="get">
                                 <div class="input-group">
-                                    <input type="text" placeholder="Search ..." class="form-control" />
+                                    <input type="text"
+                                           placeholder="Search ..."
+                                           class="form-control"
+                                           name="q"
+                                           value="{{ request.GET.q }}">
                                     <div class="input-group-append">
                                         <span class="input-group-text">
                                             <i class="la la-search search-icon"></i>
@@ -33,7 +39,8 @@
 
                         <div class="col-md-6">
                             <div class="pull-right">
-                                <a href="{% url 'college-add' %}" class="btn btn-success btn-rounded">
+                                <a href="{% url 'college-add' %}"
+                                   class="btn btn-success btn-rounded">
                                     Add College
                                 </a>
                             </div>
@@ -41,7 +48,6 @@
                     </div>
 
                     <div class="card-body">
-
                         <table class="table table-striped mt-3">
                             <thead>
                                 <tr>
@@ -79,7 +85,9 @@
                             </tbody>
                         </table>
 
+                        {% include 'includes/pagination.html' %}
                     </div>
+
                 </div>
             </div>
         </div>
