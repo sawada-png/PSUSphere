@@ -1,16 +1,25 @@
-from django.shortcuts import render
-from django.views.generic.list import ListView
-from studentorg.models import Organization
+from django.views.generic import ListView, CreateView
+from django.urls import reverse_lazy
+
+from .models import Organization
+from .forms import OrganizationForm
 
 
 class HomePageView(ListView):
     model = Organization
-    context_object_name = 'home'
+    context_object_name = "home"
     template_name = "home.html"
 
 
 class OrganizationList(ListView):
     model = Organization
-    context_object_name = 'organization'
-    template_name = 'org_list.html'
+    context_object_name = "organization"
+    template_name = "org_list.html"
     paginate_by = 5
+
+
+class OrganizationCreateView(CreateView):
+    model = Organization
+    form_class = OrganizationForm
+    template_name = "organization_form.html"
+    success_url = reverse_lazy("organization-list")
