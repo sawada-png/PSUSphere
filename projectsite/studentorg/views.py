@@ -22,7 +22,7 @@ class OrganizationList(ListView):
 class OrganizationCreateView(CreateView):
     model = Organization
     form_class = OrganizationForm
-    template_name = "organization_form.html"
+    template_name = "org_form.html"
     success_url = reverse_lazy("organization-list")
 
 
